@@ -8,13 +8,13 @@ def main():
 	files = os.listdir(dir)
 	print(f'Found {len(files)} files in cache directory')
 
-	currentEpoch = int(time.time())
+	currentEpoch = round(time.time() * 1000)
 	if not os.path.exists(f'exports/{currentEpoch}'):
 		os.makedirs(f'exports/{currentEpoch}')
 
 	completed = 0
 	failed = 0
-	beginTimestamp = currentEpoch * 1000
+	beginTimestamp = currentEpoch
 
 	for file in files:
 		filePath = f'{dir}\\{file}'
@@ -29,14 +29,14 @@ def main():
 				f.close()
 		except:
 			failed += 1
-			print(f'Failed to export {file}, probably not something that cannot be exported (E.g. data_XX files)')
+			print(f'Failed to export {file}, probably not something that cannot be exported (E.g. data_XX or index files)')
 			pass
 
 	print('\nExporting complete!')
 	print(f'{completed} files exported successfully')
 	print(f'{failed} files failed to export')
 	print(f'{len(files)} files detected in cache')
-	print(f'Took {int(time.time()) * 1000 - beginTimestamp} milliseconds to complete\n')
+	print(f'Took {round(time.time() * 1000) - beginTimestamp} milliseconds to complete\n')
 	print(f'Exported files can be found in the exports/{currentEpoch} directory')
 
 if __name__ == '__main__':
