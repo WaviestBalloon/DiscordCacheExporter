@@ -27,7 +27,7 @@ def main():
 
 				completed += 1
 				f.close()
-		except:
+		except Exception as err:
 			failed += 1
 			print(f'Failed to export {file}, probably not something that cannot be exported (E.g. data_XX or index files)')
 			pass
