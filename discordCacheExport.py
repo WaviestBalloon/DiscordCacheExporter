@@ -3,7 +3,7 @@ import time
 import filetype
 
 def main():
-	dir = f'C:\\Users\\{os.getlogin()}\\AppData\\Roaming\\discord\\Cache'
+	dir = f'C:\\Users\\{os.getlogin()}\\AppData\\Roaming\\discord\\Cache\\Cache_Data'
 	print(f'Discovering files from Discord cache directory: {dir}')
 	files = os.listdir(dir)
 	print(f'Found {len(files)} files in cache directory')
